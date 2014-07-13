@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a new Page!!!</title>
+    </head>
+    <body>
+        <h1>Add a new page!!!</h1>
+        {% if nao_e_post %}
+            {{ nao_e_post }}
+        {% endif %}
+        <form id="page_form" method="post" action="/rango/category/{{ category_name_url }}/add_page/">
+            {% csrf_token %}
+            {% for field in form.visible_fields %}
+                {{ field.erros }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+            <input type="submit" name="submit" value="Create Page"/>
+        </form>
+    </body>
+</html>
+
